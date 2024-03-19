@@ -13,9 +13,9 @@ export default function App() {
       <Great name="Alkesh" />
 
 
-      {/* <ActivityIndicator size="large" color="midnightblue"/> */}
+      <ActivityIndicator size="large" color="midnightblue"/>
 
-      {/* <Button title="Login" onPress={() => Alert.alert("Invalid Login" , "Token expired please login again" , [
+      <Button title="Login" onPress={() => Alert.alert("Invalid Login" , "Token expired please login again" , [
         {
           text : "cancel",
           onPress : () => console.log("Cancel Pressed"),
@@ -26,7 +26,7 @@ export default function App() {
           onPress : () => console.log("OK Pressed"),
           style : "default"
         }
-      ]) }/> */}
+      ]) }/>
 
     </View>
   );
