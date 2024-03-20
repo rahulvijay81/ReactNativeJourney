@@ -10,8 +10,25 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home}  options={{ title: 'My Home' }} />
-        <Stack.Screen name="About" component={About} options={{ title: 'About us'}}/>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: "My Home",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{ title: "About us" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
