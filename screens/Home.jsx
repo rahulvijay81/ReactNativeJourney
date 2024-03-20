@@ -4,7 +4,10 @@ import React from 'react'
 export default function Home({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title='Go to About Screen' onPress={() => navigation.navigate('About')}/>
+      <Button title='Go to About Screen' onPress={() => navigation.navigate('About' , {
+        itemId: 86,
+        otherParam: 'anything you want here',
+      })}/>
     </View>
   )
 }
