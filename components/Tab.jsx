@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import Home from "../screens/Home";
 import About from "../screens/About";
 import Contacts from "../screens/Contacts";
+import Drawer from "./Drawer";
 
 export default function Tab() {
   const Tab = createBottomTabNavigator();
@@ -12,7 +12,7 @@ export default function Tab() {
   return (
     <Tab.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="Feed"
+      initialRouteName="Home"
       tabBarOptions={{
         activeTintColor: "blue",
         inactiveTintColor: "gray",
@@ -43,13 +43,13 @@ export default function Tab() {
       />
       <Tab.Screen
         options={{
-          tabBarLabel: "Contacts",
+          tabBarLabel: "Leave",
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="contacts" size={size} color={color} />
           ),
         }}
-        name="contacts"
-        component={Contacts}
+        name="Leave"
+        component={Drawer}
       />
       <Tab.Screen
         options={{
@@ -61,6 +61,7 @@ export default function Tab() {
         name="About"
         component={About}
       />
+
     </Tab.Navigator>
   );
 }
