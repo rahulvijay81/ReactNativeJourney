@@ -1,10 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from '@expo/vector-icons';
 import React from "react";
 import Home from "../screens/Home";
 import About from "../screens/About";
 import Drawer from "./Drawer";
 import { View } from "react-native";
+import Employee from "../screens/Employee";
 
 export default function Tab() {
   const Tab = createBottomTabNavigator();
@@ -19,11 +21,9 @@ export default function Tab() {
           tabBarInactiveTintColor: "#191919",
           tabBarStyle: {
             backgroundColor: "#f4f4f4",
-            borderRadius: 16,
-            bottom: 5,
             height: 60,
             borderTopColor: "#ECECEB",
-            width: "98%",
+            width: "100%",
             alignSelf: "center",
           },
           tabBarItemStyle: {
@@ -46,7 +46,11 @@ export default function Tab() {
           options={{
             tabBarLabel: "Leave",
             tabBarIcon: ({ color, size }) => (
-              <MaterialIcons name="leave-bags-at-home" size={size} color={color} />
+              <MaterialIcons
+                name="leave-bags-at-home"
+                size={size}
+                color={color}
+              />
             ),
           }}
           name="Leave"
@@ -54,7 +58,17 @@ export default function Tab() {
         />
         <Tab.Screen
           options={{
-            tabBarLabel: "About",
+            tabBarLabel: "Employee",
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesome5 name="users" size={size} color={color} />
+            ),
+          }}
+          name="Employee"
+          component={Employee}
+        />
+        <Tab.Screen
+          options={{
+            tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="person" size={size} color={color} />
             ),

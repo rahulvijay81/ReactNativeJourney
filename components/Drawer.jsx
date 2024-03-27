@@ -1,18 +1,23 @@
 import React from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import Contacts from "../screens/Contacts";
-import Home from "../screens/Home";
-import About from "../screens/About";
-import 'react-native-gesture-handler';
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import "react-native-gesture-handler";
+import LeaveApply from "../screens/Leave/LeaveApply";
+import LeaveList from "../screens/Leave/LeaveList";
+import LeaveBalance from "../screens/Leave/LeaveBalance";
 
 export default function Drawer() {
   const Draw = createDrawerNavigator();
 
   return (
-    <Draw.Navigator>
-      <Draw.Screen name="Leave Apply" component={Home} />
-      <Draw.Screen name="Leave List" component={Contacts} />
-      <Draw.Screen name="Leave Balance" component={About} />
+    <Draw.Navigator
+      screenOptions={{
+        headerShown: true,
+        headerTransparent : true,
+      }}
+    >
+      <Draw.Screen name="Leave Apply" component={LeaveApply} />
+      <Draw.Screen name="Leave List" component={LeaveList} />
+      <Draw.Screen name="Leave Balance" component={LeaveBalance} />
     </Draw.Navigator>
   );
 }

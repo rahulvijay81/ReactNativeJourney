@@ -49,7 +49,7 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
+      <Text style={styles.title}>Login</Text>
       <View style={styles.inputBox}>
         <MaterialCommunityIcons
           name={"email"}

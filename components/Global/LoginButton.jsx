@@ -29,7 +29,7 @@ export default function LoginButton({
 
 const styles = StyleSheet.create({
   button: {
-    width: 120,
+    width: 200,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
@@ -54,44 +54,3 @@ const styles = StyleSheet.create({
   },
 });
 
-const obj = {
-  1: ["bu/create", "bu/edit/:buId"],
-  13: [
-    "leave/create",
-    "edit/:leaveId",
-    "calendar/holiday/add",
-    "calendar/holiday/list",
-    "calendar/holiday/edit/:holidayId",
-    "employee/create",
-    "employee/edit/:employeeId",
-    "employee/view/:employeeId",
-    "employee/add-leave-allocation",
-    "employee/leave-allocation",
-    "employee/add-compensation-leave-allocation",
-    "employee/compensation-leave-list",
-  ],
-  123: ["Administrative/*"], // all the administrative related routes
-  234: [
-    "leave/leave-apply",
-    "leave/applied-leaves",
-    "leave/balance",
-    "request/leaves",
-  ],
-  1234: [
-    "calendar/holiday",
-    "bu/list",
-    "leave/list",
-    "calendar/wokingdays/list",
-    "settings/login-history",
-    "settings/change-password",
-    "stratdrive",
-    "attendance",
-    "employee/list",
-    "employee/alumni",
-    "profile",
-    "forgot-password",
-    "otp",
-    "update-password",
-  ],
-  3: ["calendar/wokingdays/add", "calendar/wokingdays/edit"],
-};
