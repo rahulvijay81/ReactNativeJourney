@@ -1,27 +1,45 @@
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
-import React from "react";
+import { API_BASE_URL } from "../constants/constants";
+import Axios from "axios";
 
 export default function Employee() {
-  const employeesData = require("../data/employees.json");
+  const [data, setData] = useState([]);
 
-  const employeeList = employeesData.employees;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await Axios.get(`${API_BASE_URL}/posts`, {}, {});
+        console.log(response.data);
+        setData(response.data);
+      } catch (error) {
+        console.error("Error submitting the form:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.cardArea}>
-          {employeeList?.map((data) => (
+          {data?.map((data) => (
             <View key={data?.id} style={styles.card}>
               <View style={styles.cardHead}>
                 <Image
-                  src={data?.profile_picture}
+                  source={
+                    require("../assets/user.png")
+                  }
                   style={styles.profile_picture}
                 />
-                <Text style={{ marginLeft: 10 }}>{data?.name}</Text>
+
+                <Text style={{ marginLeft: 10 }}>{data?.title}</Text>
               </View>
-              <Text>{data?.department}</Text>
-              <Text>{data?.address}</Text>
-              <Text>{data?.phone_number}</Text>
+              <Text style={{ paddingBottom: 5 }}>
+                {data?.body}
+              </Text>
+              
             </View>
           ))}
         </View>
