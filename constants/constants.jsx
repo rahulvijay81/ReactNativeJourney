@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://api-strathrms.strat-staging.com"
+export const API_BASE_URL = ""
