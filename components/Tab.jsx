@@ -1,15 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
 import React from "react";
 import Home from "../screens/Home";
 import About from "../screens/About";
-import Drawer from "./Drawer";
 import { View } from "react-native";
 import Employee from "../screens/Employee";
+import Drawer from "./Drawer";
 
 export default function Tab() {
   const Tab = createBottomTabNavigator();
+  const navigation = useNavigation();
 
   return (
     <View style={{ flex: 1, margin: 0 }}>
@@ -35,12 +37,14 @@ export default function Tab() {
         <Tab.Screen
           options={{
             tabBarLabel: "Home",
+            headerShown: false,
+            headerTitle: "",
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="home" size={size} color={color} />
             ),
           }}
           name="Home"
-          component={Home}
+          component={Drawer}
         />
         <Tab.Screen
           options={{
@@ -54,7 +58,7 @@ export default function Tab() {
             ),
           }}
           name="Leave"
-          component={Drawer}
+          component={Home}
         />
         <Tab.Screen
           options={{

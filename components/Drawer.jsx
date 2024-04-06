@@ -1,18 +1,35 @@
+// Drawer.jsx
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import "react-native-gesture-handler";
+import { createDrawerNavigator, DrawerActions } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 import LeaveApply from "../screens/Leave/LeaveApply";
 import LeaveList from "../screens/Leave/LeaveList";
 import LeaveBalance from "../screens/Leave/LeaveBalance";
+import "react-native-gesture-handler";
+
+const Draw = createDrawerNavigator();
 
 export default function Drawer() {
-  const Draw = createDrawerNavigator();
+  const navigation = useNavigation();
 
   return (
     <Draw.Navigator
       screenOptions={{
         headerShown: true,
-        headerTransparent : true,
+        headerTransparent: true,
+        headerTitle : "",
+        headerRight: () => (
+          <MaterialIcons
+            style={{ paddingRight: 20 }}
+            name="logout"
+            size={30}
+            color="#000"
+            onPress={() => {
+              navigation.navigate("Login");
+            }}
+          />
+        ),
       }}
     >
       <Draw.Screen name="Leave Apply" component={LeaveApply} />
