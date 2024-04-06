@@ -6,10 +6,24 @@ import Axios from "axios";
 export default function Employee() {
   const [data, setData] = useState([]);
 
+  const employeeBUID = "1";
+  const logInToken =
+    "94a312750b277a1779bf3ea8b107ead3cfdc69fa13d5865e0a49d3467c08d5d1";
+  const userId = "7";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Axios.get(`${API_BASE_URL}/posts`, {}, {});
+        const response = await Axios.post(
+          `${API_BASE_URL}/employee`,
+          { employeeBUID },
+          {
+            headers: {
+              Authorization: `Bearer ${logInToken}`,
+              UserId: `${userId}`,
+            },
+          }
+        );
         console.log(response.data);
         setData(response.data);
       } catch (error) {
@@ -18,7 +32,7 @@ export default function Employee() {
     };
 
     fetchData();
-  }, []);
+  }, [logInToken, userId, employeeBUID]);
 
   return (
     <View style={styles.container}>
@@ -29,17 +43,19 @@ export default function Employee() {
               <View style={styles.cardHead}>
                 <Image
                   source={
-                    require("../assets/user.png")
+                    data?.employeeProfilePicture
+                      ? { uri: data?.employeeProfilePicture }
+                      : require("../assets/user.png")
                   }
                   style={styles.profile_picture}
                 />
 
-                <Text style={{ marginLeft: 10 }}>{data?.title}</Text>
+                <Text style={{ marginLeft: 10 }}>{data?.employeeName}</Text>
               </View>
-              <Text style={{ paddingBottom: 5 }}>
-                {data?.body}
-              </Text>
-              
+              <Text style={{ paddingBottom: 5 }}>{data?.employeeId}</Text>
+              <Text style={{ paddingBottom: 5 }}>{data?.designationName}</Text>
+              <Text style={{ paddingBottom: 5 }}>{data?.buName}</Text>
+              <Text style={{ paddingBottom: 5 }}>{data?.workEmail}</Text>
             </View>
           ))}
         </View>
@@ -58,6 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 20,
     paddingTop: 40,
+    paddingBottom: 10,
   },
   card: {
     backgroundColor: "#fff",

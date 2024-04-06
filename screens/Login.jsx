@@ -13,7 +13,6 @@ export default function Login() {
   const handleLogin = () => {
     console.log("Email:", email);
     console.log("Password:", password);
-    navigation.navigate("Tab");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
