@@ -16,20 +16,10 @@ export default function Drawer() {
   return (
     <Draw.Navigator
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerTransparent: true,
         headerTitle : "",
-        headerRight: () => (
-          <MaterialIcons
-            style={{ paddingRight: 20 }}
-            name="logout"
-            size={30}
-            color="#000"
-            onPress={() => {
-              navigation.navigate("Login");
-            }}
-          />
-        ),
+       
       }}
     >
       <Draw.Screen name="Leave Apply" component={LeaveApply} />

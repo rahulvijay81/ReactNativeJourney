@@ -1,44 +1,42 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import React from "react";
 import Home from "../screens/Home";
-import About from "../screens/About";
-import { View } from "react-native";
 import Employee from "../screens/Employee";
 import Drawer from "./Drawer";
 
 export default function Tab() {
   const Tab = createBottomTabNavigator();
-  const navigation = useNavigation();
 
   return (
-    <View style={{ flex: 1, margin: 0 }}>
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: "#1919",
+          tabBarActiveTintColor: "#EE4B2B",
           tabBarInactiveTintColor: "#191919",
           tabBarStyle: {
-            backgroundColor: "#f4f4f4",
+            backgroundColor: "#fff",
             height: 60,
-            borderTopColor: "#ECECEB",
-            width: "100%",
+            borderTopColor: "#fff",
+            width: "98%",
+            marginBottom : "5%",
             alignSelf: "center",
+            borderTopRightRadius : "8px",
+            borderTopLeftRadius : "8px",
           },
           tabBarItemStyle: {
             height: 50,
-            marginHorizontal: 3,
+            marginHorizontal: 5,
           },
         }}
       >
         <Tab.Screen
           options={{
-            tabBarLabel: "Home",
+            tabBarLabel: "",
             headerShown: false,
             headerTitle: "",
+            headerTransparent: true,
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="home" size={size} color={color} />
             ),
@@ -48,10 +46,10 @@ export default function Tab() {
         />
         <Tab.Screen
           options={{
-            tabBarLabel: "Leave",
+            tabBarLabel: "",
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons
-                name="leave-bags-at-home"
+                name="movie"
                 size={size}
                 color={color}
               />
@@ -62,25 +60,15 @@ export default function Tab() {
         />
         <Tab.Screen
           options={{
-            tabBarLabel: "Employee",
+            tabBarLabel: "",
+            tabBarBadge : "3",
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome5 name="users" size={size} color={color} />
+              <MaterialIcons name="bookmark" size={size} color={color} />
             ),
           }}
           name="Employee"
           component={Employee}
         />
-        <Tab.Screen
-          options={{
-            tabBarLabel: "Profile",
-            tabBarIcon: ({ color, size }) => (
-              <MaterialIcons name="person" size={size} color={color} />
-            ),
-          }}
-          name="About"
-          component={About}
-        />
       </Tab.Navigator>
-    </View>
   );
 }
